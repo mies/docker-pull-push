@@ -1,0 +1,21 @@
+box: wercker/default
+build:
+  steps:
+    - script:
+        name: pull image
+        code: sudo docker pull schmidh/arch-base
+    - script:
+        name: docker build
+        code: sudo docker build -t mies/rethinkdb .
+    - script:
+        name: docker commit
+        code: |
+          LAST=$(sudo docker ps -a -q | head -n 1)
+          sudo docker commit $LAST mies/rethinkdb
+
+
+deploy:
+  steps:
+    - script:
+        name: docker push auto script
+        code: sh deploy.sh
