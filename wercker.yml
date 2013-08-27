@@ -20,4 +20,4 @@ deploy:
         packages: expect
     - script:
         name: docker push auto script
-        code: sh deploy.sh
+        code: ./deploy.sh
