@@ -1,4 +1,5 @@
-box: wercker/bootstrap
+box: ami-fd511c94
+box-type: ami
 build:
   steps:
     - script:
